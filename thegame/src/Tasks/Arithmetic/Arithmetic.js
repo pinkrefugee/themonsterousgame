@@ -17,6 +17,15 @@ function arithmeticTask(){
     let input = document.createElement('input');
     input.setAttribute("type", "text");
     
+    arithmeticContainer.addEventListener('keydown', (event)=>{
+      
+      if (event.key === 'ArrowRight'){
+        document.activeElement.nextSibling.focus();
+      } 
+      if (event.key === 'ArrowLeft'){
+        document.activeElement.previousSibling.focus();
+      } 
+    })
   
     let arithmeticAnswerButton = document.createElement('button');
     arithmeticAnswerButton.innerHTML = 'Answer';
@@ -38,6 +47,7 @@ function arithmeticTask(){
     arithmeticContainer.appendChild(expression);
     arithmeticContainer.appendChild(input);
     arithmeticContainer.appendChild(arithmeticAnswerButton);
+    input.focus();
   
   }
 

@@ -3,6 +3,15 @@ import getAnswer from '../../app';
 const animals = ["seal", "dog", "cat", "pig"];
 function animalsTask(){
     let animalsTaskContainer = document.querySelector('.animals-task');
+    animalsTaskContainer.addEventListener('keydown', (event)=>{
+      
+      if (event.key === 'ArrowDown'){
+        document.activeElement.nextSibling.focus();
+      } 
+      if (event.key === 'ArrowUp'){
+        document.activeElement.previousSibling.focus();
+      } 
+    })
     animalsTaskContainer.style.display = "flex";
     let animalImage = document.createElement('img');
     let animalIndex = Math.floor(Math.random() * animals.length);
@@ -31,5 +40,6 @@ function animalsTask(){
     animalsTaskContainer.appendChild(animalImage);
     animalsTaskContainer.appendChild(animalInput);
     animalsTaskContainer.appendChild(animalsAnswerButton);
+    animalInput.focus();
 }
 export default animalsTask;

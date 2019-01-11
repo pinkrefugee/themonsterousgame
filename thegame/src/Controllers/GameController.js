@@ -8,7 +8,9 @@ document.body.appendChild(canvas);
 
 let globalObj = {player: null, enemy: null, playername: null, gameCanvas: canvas, gameContext: context, enemiesCount: 0};
 
+
 export default globalObj;
+
 
 
 

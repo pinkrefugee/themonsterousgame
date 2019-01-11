@@ -9,8 +9,7 @@ import Character from './Characters/player';
 import Enemy from './Characters/enemy';
 import globalObj from './Controllers/GameController';
 
-
-let totalResources = 23;
+let totalResources = 28;
 let numResourcesLoaded = 0;
 
 
@@ -26,15 +25,20 @@ function resourceLoaded(){
     numResourcesLoaded += 1;
     if(numResourcesLoaded === totalResources) {
       globalObj.gameImages = images;
-      globalObj.redraw();
+      //globalObj.redraw();
     }
   }
 let images = {};
 function loadImages(){
     loadImage("bg");
     loadImage("hero");
+    loadImage("hero-attacked");
+    loadImage("hero-healed");
     loadImage("player-fireball");
     loadImage("monster-fireball");
+    loadImage("enemy-head-1-attacked");
+    loadImage("enemy-head-2-attacked");
+    loadImage("enemy-head-3-attacked");
     loadImage("enemy-body-1");
     loadImage("enemy-head-1");
     loadImage("leg-left-1");
@@ -70,6 +74,10 @@ globalObj.redraw = function(){
     
     globalObj.enemy.createFigure();
     globalObj.enemy.createHealthBar();
+
+    if(document.querySelector('.attack-button')){
+      document.querySelector('.attack-button').focus();
+    }
 }
 function getAnswer(result, type){
   if(type === 'heal'){
@@ -90,25 +98,19 @@ initChooseTaskModal();
 
 
 
-
-let but = document.createElement('button');
-but.classList.add('attack-button');
-but.innerHTML = 'Attack';
-
-but.addEventListener('click', ()=>{
+let attackButton = document.createElement('button');
+attackButton.classList.add('attack-button');
+attackButton.innerHTML = 'Attack';
+attackButton.addEventListener('click', ()=>{
   let modal = document.querySelector('.modal');
   modal.style.display = "block";
   chooseCast();
 });
-document.body.appendChild(but);
+document.body.appendChild(attackButton);
 function chooseCast(){
   let attackType = document.querySelector('.attack-type');
   attackType.style.display = "flex";
-  
-}
-function chooseTask(){
-  let taskType = document.querySelector('.task-type');
-  taskType.style.display = "flex";
+  attackType.firstChild.focus();  
 }
 
 export default getAnswer;

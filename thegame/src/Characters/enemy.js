@@ -1,3 +1,5 @@
+require("babel-polyfill");
+
 import setMonsterName from './MonsterName';
 import globalObj from '../Controllers/GameController';
 import gameEnd from '../Modals/GameEnd';
@@ -12,6 +14,7 @@ class Enemy {
         this.bodyType = Math.floor(Math.random() * 3) + 1;
         this.headType = Math.floor(Math.random() * 3) + 1;
         this.dead = false;
+        this.zz = 0;
     }
     createFigure() {
       globalObj.gameContext.drawImage(globalObj.gameImages[`leg-left-${this.legType}`], this.x, this.y, 70, 70);
@@ -23,14 +26,15 @@ class Enemy {
       globalObj.gameContext.drawImage(globalObj.gameImages[`arm-right-${this.legType}`], this.x + 50, this.y - 70, 70, 70);
       
     }
-    attack(){
+    async attack(){
       if (this.spellX <= globalObj.player.x) {
         this.spellX = 1345;
-        globalObj.player.health -= 20;
+        globalObj.player.health -= 40;
         if(this.checkDead()){
            gameEnd('Loose!');
            return;
         }
+        await globalObj.player.takeAttack();
         globalObj.redraw();
         return;
       }
@@ -58,6 +62,15 @@ class Enemy {
         return true;
       }
       return false;
+    }
+    takeAttack(){
+      
+      return new Promise(resolve => {
+        globalObj.gameContext.drawImage(globalObj.gameImages[`enemy-head-${this.headType}-attacked`], this.x, this.y - 220, 150, 150);
+      setTimeout(() => {
+        resolve();
+      }, 1000);
+      });   
     }
   }
   

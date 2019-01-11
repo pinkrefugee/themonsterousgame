@@ -19,6 +19,18 @@ function listeningComprehensionTask(){
       speech.lang = 'en-GB';
       synth.speak(speech);
     })
+
+    listeningTaskContainer.addEventListener('keydown', (event)=>{
+      
+      if (event.key === 'ArrowRight'){
+        document.activeElement.nextSibling.focus();
+      } 
+      if (event.key === 'ArrowLeft'){
+        document.activeElement.previousSibling.focus();
+      } 
+    })
+
+
     listeningTaskContainer.appendChild(pronounceWordButton);
   
     let listeningAnswerButton = document.createElement('button');
@@ -40,6 +52,7 @@ function listeningComprehensionTask(){
   
     });
     listeningTaskContainer.appendChild(listeningAnswerButton); 
+    input.focus();
   
   }
 export default listeningComprehensionTask;  

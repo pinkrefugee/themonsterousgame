@@ -17,6 +17,7 @@ body{
     padding: 1% 2%;
     border-radius: 5px;
 }
+
 .attack-button:hover{
     background-color: #DC143C;
 }
@@ -83,6 +84,12 @@ input{
     outline:none;
     border-radius: 30px;
 }
+.choose-name-modal button:focus{
+    background-color: #696969; 
+}
+.choose-name-modal button:hover{
+    background-color: #696969; 
+}
 .modal {
     display: none; 
     position: fixed; 
@@ -119,7 +126,10 @@ input{
   border-radius: 30px;
 }
 .modal-content button:hover{
-    background-color: #F0EAD6;
+    background-color: #FFA07A;
+}
+.modal-content button:focus{
+    background-color: #FFA07A;
 }
 .attack-type{
     display: none;
@@ -160,6 +170,7 @@ input{
 }
 .game-end-modal{
     display: none; 
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: fixed; 
@@ -170,4 +181,17 @@ input{
     height: 100%; 
     overflow: auto; 
     background-color: rgb(156, 156, 126);   
+}
+.end-button{
+    background-color: black; 
+    border: none;
+    color: white;
+    padding: 24px 50px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    outline:none;
+    border-radius: 30px;
 }

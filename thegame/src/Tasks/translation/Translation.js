@@ -11,7 +11,17 @@ function translateTask(){
     let input = document.createElement('input');
     input.setAttribute("type", "text");
     translateTaskContainer.appendChild(input);
-  
+
+    translateTaskContainer.addEventListener('keydown', (event)=>{
+      
+      if (event.key === 'ArrowRight'){
+        document.activeElement.nextSibling.focus();
+      } 
+      if (event.key === 'ArrowLeft'){
+        document.activeElement.previousSibling.focus();
+      } 
+    })
+
     let translateAnswerButton = document.createElement('button');
     translateAnswerButton.innerHTML = 'Answer';
     translateAnswerButton.addEventListener('click', function(){
@@ -30,6 +40,7 @@ function translateTask(){
   
     });
     translateTaskContainer.appendChild(translateAnswerButton);
+    input.focus();
   }
 
   export default translateTask;

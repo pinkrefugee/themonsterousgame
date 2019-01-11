@@ -7,7 +7,22 @@ function initChooseSpellModal(){
       let taskType = document.querySelector('.task-type');
       taskType.style.display = "flex";
     })
-    attackButton.innerHTML = 'Attack'
+    attackButton.addEventListener('click', function(){
+      attackType.style.display = "none";
+      let taskType = document.querySelector('.task-type');
+      taskType.style.display = "flex";
+      taskType.firstChild.focus();  
+    })
+    attackType.addEventListener('keydown', (event)=>{
+      
+      if (event.key === 'ArrowRight'){
+        document.activeElement.nextSibling.focus();
+      } 
+      if (event.key === 'ArrowLeft'){
+        document.activeElement.previousSibling.focus();
+      } 
+    })
+    attackButton.innerHTML = 'Attack';
     let healButton = document.createElement('button');
     healButton.innerHTML = 'Heal';
     healButton.addEventListener('click', function(){
@@ -17,6 +32,7 @@ function initChooseSpellModal(){
     
     attackType.appendChild(attackButton);
     attackType.appendChild(healButton);
+    
 }
 
 export default initChooseSpellModal;

@@ -12,15 +12,18 @@ class Character {
   createFigure () {
       globalObj.gameContext.drawImage(globalObj.gameImages["hero"], this.x, this.y, 350, 350);
   }
-  attack(){
+  async attack(){
     if (this.spellX >= globalObj.enemy.x) {
       globalObj.redraw();
       this.spellX = 345;
-      globalObj.enemy.health-=100;
+      globalObj.enemy.health-=70;
+
       if(this.checkWin()){
         globalObj.enemy.dead = true;
         globalObj.enemiesCount ++;
       }
+      await globalObj.enemy.takeAttack();
+      //globalObj.redraw();
       return;
     }
     globalObj.redraw();
@@ -28,16 +31,39 @@ class Character {
     this.spellX +=15;
     requestAnimationFrame(() => { this.attack() });
   }
-  heal(){
+  async heal(){
     this.health +=50;
     if(this.health >= 100){
       this.health = 100;
     }
+    this.playSound();
+    await this.healAnimation();
     globalObj.redraw();
   }
+  healAnimation(){
+    return new Promise(resolve => {
+      globalObj.gameContext.drawImage(globalObj.gameImages["hero-healed"], this.x, this.y, 350, 350);
+    setTimeout(() => {
+      resolve();
+    }, 3000);
+    }); 
+  }
   playSound(){
-    const audio = new Audio('audio/player.wav');
+    return new Promise(resolve => {
+      const audio = new Audio('audio/player.wav');
     audio.play();
+    setTimeout(() => {
+      resolve();
+    }, 3000);
+    }); 
+  }
+  takeAttack(){
+    return new Promise(resolve => {
+      globalObj.gameContext.drawImage(globalObj.gameImages["hero-attacked"], this.x, this.y, 350, 350);
+    setTimeout(() => {
+      resolve();
+    }, 1000);
+    }); 
   }
   createHealthBar(){
     globalObj.gameContext.fillStyle = "black";
@@ -52,8 +78,7 @@ class Character {
     async correctAnswer(){
     await pause(1000);
     globalObj.player.attack();
-    globalObj.player.playSound();
-    await pause(2000);
+    await globalObj.player.playSound();
     if(globalObj.enemy.dead){
       if(globalObj.enemiesCount === 3){
         gameEnd('Win!');
@@ -78,7 +103,6 @@ class Character {
     }
     return false;
   }
-
 }
 const pause = time => new Promise((resolve) => {
   setTimeout(() => {

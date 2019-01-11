@@ -15,5 +15,16 @@ function initChooseNameModal(){
     })
     nameModal.appendChild(nameInput);
     nameModal.appendChild(nameButton);
+    nameModal.addEventListener('keydown', (event)=>{
+      
+      if (event.key === 'ArrowRight'){
+        document.activeElement.nextSibling.focus();
+      } 
+      if (event.key === 'ArrowLeft'){
+        document.activeElement.previousSibling.focus();
+      } 
+    })
+    nameInput.focus();
+
   }
 export default initChooseNameModal;

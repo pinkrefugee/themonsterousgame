@@ -3,6 +3,16 @@ import listeningComprehensionTask from '../Tasks/ListeningComprehension/Listenin
 import translateTask from '../Tasks/translation/Translation';
 function initChooseTaskModal(){
     let taskType = document.querySelector('.task-type');
+
+    taskType.addEventListener('keydown', (event)=>{
+      if (event.key === 'ArrowRight'){
+        document.activeElement.nextSibling.focus();
+      } 
+      if (event.key === 'ArrowLeft'){
+        document.activeElement.previousSibling.focus();
+      } 
+    })
+
     let arithmeticButton = document.createElement('button');
     arithmeticButton.innerHTML = 'Arithmetic';
     taskType.appendChild(arithmeticButton);
@@ -24,6 +34,8 @@ function initChooseTaskModal(){
       taskType.style.display = "none";
       listeningComprehensionTask();
     })
+
+   
   }
   export default initChooseTaskModal;
   
