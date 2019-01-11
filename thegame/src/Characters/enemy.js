@@ -31,7 +31,7 @@ class Enemy {
         this.spellX = 1345;
         globalObj.player.health -= 40;
         if(this.checkDead()){
-           gameEnd('Loose!');
+           gameEnd('Lose!');
            return;
         }
         await globalObj.player.takeAttack();
