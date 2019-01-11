@@ -1,15 +1,29 @@
 body{
     margin: 0;
-    padding: 0;
+    padding: 0;   
+    overflow: hidden;
 }
-.abs{
+
+.attack-button{
     position: absolute;
-    top: 10px;
-    left: 20px;
+    bottom: 9%;
+    left: 47%;  
+    background-color: #FFEFD5;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 26px;
+    padding: 1% 2%;
+    border-radius: 5px;
+}
+.attack-button:hover{
+    background-color: #DC143C;
 }
 canvas{
-    
+    position: relative;
     width: 100vw;
+    height: 100vh;
 }
 .bar-container {
     position: absolute;
@@ -32,6 +46,17 @@ input{
     width: 250px;
     margin: 15px;
 }
+.name-input{
+    height: 70px;
+    font-size: 21px;
+    font-weight: bold;
+}
+::placeholder { 
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+  }
+
 .choose-name-modal{
     display: flex; 
     justify-content: center;
@@ -49,7 +74,7 @@ input{
     background-color: black; 
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 24px 50px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
@@ -124,4 +149,25 @@ input{
     justify-content: center;
     align-items: center;
     background-color: #7FDBFF;
+}
+.animals-task{
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 70%;
+    background-color: #98FB98;
+}
+.game-end-modal{
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    position: fixed; 
+    z-index: 5; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(156, 156, 126);   
 }
