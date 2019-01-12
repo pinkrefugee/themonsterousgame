@@ -195,3 +195,16 @@ input{
     outline:none;
     border-radius: 30px;
 }
+table {
+    border-collapse: collapse;
+}
+  
+table, td {
+    border: 1px solid black;
+    font-size: 32px;
+    padding: 10px 30px;
+}
+.bold{
+    font-weight: bold;
+    font-size: 40px;
+}

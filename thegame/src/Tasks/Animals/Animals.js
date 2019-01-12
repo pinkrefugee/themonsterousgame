@@ -1,4 +1,5 @@
 import getAnswer from '../../app';
+import globalObj from '../../Controllers/GameController';
 
 const animals = ["seal", "dog", "cat", "pig"];
 function animalsTask(){

@@ -16,7 +16,7 @@ class Character {
     if (this.spellX >= globalObj.enemy.x) {
       globalObj.redraw();
       this.spellX = 345;
-      globalObj.enemy.health-=70;
+      globalObj.enemy.health-=100;
 
       if(this.checkWin()){
         globalObj.enemy.dead = true;

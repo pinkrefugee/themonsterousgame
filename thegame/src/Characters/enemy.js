@@ -29,7 +29,7 @@ class Enemy {
     async attack(){
       if (this.spellX <= globalObj.player.x) {
         this.spellX = 1345;
-        globalObj.player.health -= 40;
+        globalObj.player.health -= 100;
         if(this.checkDead()){
            gameEnd('Lose!');
            return;
